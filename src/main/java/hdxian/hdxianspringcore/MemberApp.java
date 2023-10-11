@@ -8,7 +8,12 @@ import hdxian.hdxianspringcore.member.MemberServiceImpl;
 public class MemberApp {
 
     public static void main(String[] args) {
-        MemberService memberService = new MemberServiceImpl();
+        // AppConfig 객체를 생성하고, AppConfig 객체로부터 구현체를 생성한다.
+        AppConfig appConfig = new AppConfig();
+
+        // memberService에는 memberServiceImpl 객체가 들어있음.
+        MemberService memberService = appConfig.memberService();
+//        MemberService memberService = new MemberServiceImpl();
         Member member = new Member(1L, "memberA", Grade.VIP);
 
         memberService.join(member);
