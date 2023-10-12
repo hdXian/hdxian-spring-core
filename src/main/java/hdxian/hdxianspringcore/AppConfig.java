@@ -1,6 +1,8 @@
 package hdxian.hdxianspringcore;
 
+import hdxian.hdxianspringcore.discount.DiscountPolicy;
 import hdxian.hdxianspringcore.discount.FixDiscountPolicy;
+import hdxian.hdxianspringcore.member.MemberRepository;
 import hdxian.hdxianspringcore.member.MemberService;
 import hdxian.hdxianspringcore.member.MemberServiceImpl;
 import hdxian.hdxianspringcore.member.MemoryMemberRepository;
@@ -12,11 +14,18 @@ import hdxian.hdxianspringcore.order.OrderServiceImpl;
 public class AppConfig {
 
     public MemberService memberService() {
-        return new MemberServiceImpl(new MemoryMemberRepository());
+        return new MemberServiceImpl(memberRepository());
     }
 
     public OrderService orderService() {
-        return new OrderServiceImpl(new MemoryMemberRepository(), new FixDiscountPolicy());
+        return new OrderServiceImpl(memberRepository(), discountPolicy());
+    }
+    public MemberRepository memberRepository() {
+        return new MemoryMemberRepository();
+    }
+
+    public DiscountPolicy discountPolicy() {
+        return new FixDiscountPolicy();
     }
 
 }
