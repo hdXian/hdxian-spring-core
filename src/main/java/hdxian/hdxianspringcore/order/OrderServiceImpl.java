@@ -10,7 +10,6 @@ import hdxian.hdxianspringcore.member.MemoryMemberRepository;
 public class OrderServiceImpl implements OrderService {
 
 //    private final MemberRepository memberRepository = new MemoryMemberRepository();
-//    private final DiscountPolicy discountPolicy = new FixDiscountPolicy();
 //    private final DiscountPolicy discountPolicy = new RateDiscountPolicy();
     private final MemberRepository memberRepository;
     private final DiscountPolicy discountPolicy;
@@ -29,4 +28,5 @@ public class OrderServiceImpl implements OrderService {
 
         return new Order(memberId, itemName, itemPrice, discountPrice);
     }
+
 }
