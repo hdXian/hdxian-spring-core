@@ -2,6 +2,7 @@ package hdxian.hdxianspringcore;
 
 import hdxian.hdxianspringcore.discount.DiscountPolicy;
 import hdxian.hdxianspringcore.discount.FixDiscountPolicy;
+import hdxian.hdxianspringcore.discount.RateDiscountPolicy;
 import hdxian.hdxianspringcore.member.MemberRepository;
 import hdxian.hdxianspringcore.member.MemberService;
 import hdxian.hdxianspringcore.member.MemberServiceImpl;
@@ -13,12 +14,21 @@ import hdxian.hdxianspringcore.order.OrderServiceImpl;
 // 앞으로 애플리케이션에 대한 환경 설정은 모두 이 클래스에서 수행한다.
 public class AppConfig {
 
+    public MemberRepository memberRepository() {
+        return new MemoryMemberRepository();
+    }
+
+    public DiscountPolicy discountPolicy() {
+//        return new FixDiscountPolicy();
+        return new RateDiscountPolicy();
+    }
+
     public MemberService memberService() {
-        return new MemberServiceImpl(new MemoryMemberRepository());
+        return new MemberServiceImpl(memberRepository());
     }
 
     public OrderService orderService() {
-        return new OrderServiceImpl(new MemoryMemberRepository(), new FixDiscountPolicy());
+        return new OrderServiceImpl(memberRepository(), discountPolicy());
     }
 
 
