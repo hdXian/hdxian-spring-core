@@ -7,6 +7,8 @@ import hdxian.hdxianspringcore.member.MemberServiceImpl;
 import hdxian.hdxianspringcore.order.Order;
 import hdxian.hdxianspringcore.order.OrderService;
 import hdxian.hdxianspringcore.order.OrderServiceImpl;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class OrderApp {
 
@@ -14,12 +16,18 @@ public class OrderApp {
 //        MemberService memberService = new MemberServiceImpl(null);
 //        OrderService orderService = new OrderServiceImpl(null, null);
 
-        AppConfig appConfig = new AppConfig();
-        // memberService는 MemberServiceImpl 객체를 참조함.
-        MemberService memberService = appConfig.memberService();
-        // orderService는 OrderServiceImpl 객체를 참조함.
-        // AppConfig에서 MemoryMemberService, FixDiscountPolicy를 주입해줌.
-        OrderService orderService = appConfig.orderService();
+//        AppConfig appConfig = new AppConfig();
+//        // memberService는 MemberServiceImpl 객체를 참조함.
+//        MemberService memberService = appConfig.memberService();
+//        // orderService는 OrderServiceImpl 객체를 참조함.
+//        // AppConfig에서 MemoryMemberService, FixDiscountPolicy를 주입해줌.
+//        OrderService orderService = appConfig.orderService();
+
+        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
+
+        MemberService memberService = applicationContext.getBean("memberService", MemberService.class);
+        OrderService orderService = applicationContext.getBean("orderService", OrderService.class);
+
         Long memberId = 1L;
         Member member = new Member(memberId, "memberA", Grade.VIP);
         memberService.join(member);

@@ -1,11 +1,8 @@
 package hdxian.hdxianspringcore.order;
 
 import hdxian.hdxianspringcore.discount.DiscountPolicy;
-import hdxian.hdxianspringcore.discount.FixDiscountPolicy;
-import hdxian.hdxianspringcore.discount.RateDiscountPolicy;
 import hdxian.hdxianspringcore.member.Member;
 import hdxian.hdxianspringcore.member.MemberRepository;
-import hdxian.hdxianspringcore.member.MemoryMemberRepository;
 
 public class OrderServiceImpl implements OrderService {
 

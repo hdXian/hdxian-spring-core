@@ -9,24 +9,31 @@ import hdxian.hdxianspringcore.member.MemberServiceImpl;
 import hdxian.hdxianspringcore.member.MemoryMemberRepository;
 import hdxian.hdxianspringcore.order.OrderService;
 import hdxian.hdxianspringcore.order.OrderServiceImpl;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
 // 애플리케이션 전체를 설정하고 구성함.
 // 앞으로 애플리케이션에 대한 환경 설정은 모두 이 클래스에서 수행한다.
+@Configuration
 public class AppConfig {
 
+    @Bean
     public MemberRepository memberRepository() {
         return new MemoryMemberRepository();
     }
 
+    @Bean
     public DiscountPolicy discountPolicy() {
 //        return new FixDiscountPolicy();
         return new RateDiscountPolicy();
     }
 
+    @Bean
     public MemberService memberService() {
         return new MemberServiceImpl(memberRepository());
     }
 
+    @Bean
     public OrderService orderService() {
         return new OrderServiceImpl(memberRepository(), discountPolicy());
     }
