@@ -49,6 +49,17 @@ class ApplicationContextBasicFindTest {
     }
 
     @Test
+    @DisplayName("구현체 타입으로만 조회")
+    void findBeanByName3() {
+        MemberServiceImpl memberService = ac.getBean(MemberServiceImpl.class);
+        System.out.println("memberService = " + memberService);
+        System.out.println("memberService.getClass() = " + memberService.getClass());
+
+        assertThat(memberService).isInstanceOf(MemberServiceImpl.class);
+    }
+
+
+    @Test
     @DisplayName("빈 이름으로 조회 실패")
     void findBeanByNameX() {
         // 아래 코드가 실행될 때 예외가 제대로 터지는지도 테스트해야 한다.
@@ -66,7 +77,7 @@ class ApplicationContextBasicFindTest {
 
     @Test
     @DisplayName("빈 타입 없이 이름만으로 조회")
-    void findBeanByName3() {
+    void findBeanByName4() {
         Object bean = ac.getBean("memberService");
 
         System.out.println("bean = " + bean);
