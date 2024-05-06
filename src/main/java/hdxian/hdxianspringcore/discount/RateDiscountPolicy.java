@@ -2,7 +2,9 @@ package hdxian.hdxianspringcore.discount;
 
 import hdxian.hdxianspringcore.member.Grade;
 import hdxian.hdxianspringcore.member.Member;
+import org.springframework.stereotype.Component;
 
+@Component
 public class RateDiscountPolicy implements DiscountPolicy {
 
     // 할인률은 10퍼센트
