@@ -9,6 +9,7 @@ import hdxian.hdxianspringcore.member.MemberServiceImpl;
 import hdxian.hdxianspringcore.member.MemoryMemberRepository;
 import hdxian.hdxianspringcore.order.OrderService;
 import hdxian.hdxianspringcore.order.OrderServiceImpl;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -40,6 +41,7 @@ public class AppConfig {
     public OrderService orderService() {
         System.out.println("call AppConfig.orderService()");
         return new OrderServiceImpl(memberRepository(), discountPolicy());
+//        return null;
     }
 
 

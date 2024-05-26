@@ -1,10 +1,14 @@
 package hdxian.hdxianspringcore.discount;
 
+import hdxian.hdxianspringcore.annotation.MainDiscountPolicy;
 import hdxian.hdxianspringcore.member.Grade;
 import hdxian.hdxianspringcore.member.Member;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
 @Component
+@MainDiscountPolicy
 public class RateDiscountPolicy implements DiscountPolicy {
 
     // 할인률은 10퍼센트

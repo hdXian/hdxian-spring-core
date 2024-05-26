@@ -16,9 +16,9 @@ import org.springframework.context.annotation.FilterType;
 )
 public class AutoAppConfig {
 
-    @Bean(name = "memoryMemberRepository") // 빈 이름이 충돌할 경우 수동으로 등록한 빈으로 덮어씌워진다.
-    MemberRepository memberRepository() {
-        return new MemoryMemberRepository();
-    }
+//    @Bean(name = "memoryMemberRepository") // 빈 이름이 충돌할 경우 수동으로 등록한 빈으로 덮어씌워진다.
+//    MemberRepository memberRepository() {
+//        return new MemoryMemberRepository();
+//    }
 
 }
