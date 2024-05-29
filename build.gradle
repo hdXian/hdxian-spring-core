@@ -25,6 +25,10 @@ repositories {
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter'
+	implementation 'javax.inject:javax.inject:1'
+
+	// web 라이브러리 추가
+	implementation 'org.springframework.boot:spring-boot-starter-web'
 
 	// testImplementation 변경 (exclue group 추가)
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
